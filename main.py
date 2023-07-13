@@ -1,12 +1,18 @@
-from flask import Flask
+from flask import Flask, jsonify
 
 app = Flask(__name__)
 
-list_tasks = ["Sample task 1", "Sample task 2"]
+tasks = [{
+    "id": "task1",
+    "content": "Sample task 1"
+},{
+    "id": "task2",
+    "content": "Sample task 2"
+}]
 
 @app.route("/tasks", methods=["GET"])
 def get_tasks():
-    return list_tasks
+    return jsonify(tasks), 200
 
 @app.route("/")
 def index():
